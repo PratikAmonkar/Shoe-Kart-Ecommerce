@@ -1,5 +1,9 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:shoe_kart_ecommerce_app/screens/home_screen.dart';
+import 'package:shoe_kart_ecommerce_app/screens/payment_success_screen.dart';
 
 class SplashScren extends StatefulWidget {
   const SplashScren({Key? key}) : super(key: key);
@@ -9,6 +13,21 @@ class SplashScren extends StatefulWidget {
 }
 
 class _SplashScrenState extends State<SplashScren> {
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+     Timer(
+      const Duration(seconds: 3,),
+      () => Navigator.of(context).pushReplacement(
+        MaterialPageRoute(
+          builder: (BuildContext context) => const PaymentSuccessScreen(),
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
