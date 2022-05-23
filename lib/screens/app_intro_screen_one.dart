@@ -21,21 +21,30 @@ class _AppIntroScreenState extends State<AppIntroScreen> {
       Slide(
         description: "We deliver your order safely on your door step",
         pathImage: "images/deliver_package.png",
-        backgroundColor: const Color.fromARGB(255, 193, 148, 229),
+        backgroundColor: Colors.white,
+        styleDescription: const TextStyle(
+          color: Colors.black,
+        ),
       ),
     );
     slides.add(
       Slide(
         description: "We deliver your order on or before time",
         pathImage: "images/on_time.png",
-           backgroundColor: const Color.fromARGB(255, 193, 148, 229),
+        backgroundColor: Colors.white,
+        styleDescription: const TextStyle(
+          color: Colors.black,
+        ),
       ),
     );
     slides.add(
       Slide(
         description: "We accept all types of payment methods",
         pathImage: "images/payment_method.png",
-             backgroundColor: const Color.fromARGB(255, 193, 148, 229),
+        backgroundColor: Colors.white,
+        styleDescription: const TextStyle(
+          color: Colors.black,
+        ),
       ),
     );
   }
@@ -52,7 +61,33 @@ class _AppIntroScreenState extends State<AppIntroScreen> {
   Widget build(BuildContext context) {
     return IntroSlider(
       slides: slides,
-      onDonePress: onDonePress,
+      renderSkipBtn: TextButton(
+        onPressed: () {
+          onDonePress();
+        },
+        child: const Text(
+          "Skip",
+          style: TextStyle(
+            color: Colors.black,
+          ),
+        ),
+      ),
+      renderNextBtn: const Icon(
+        Icons.navigate_next,
+        color: Colors.black,
+        size: 40.0,
+      ),
+      renderDoneBtn: TextButton(
+        onPressed: () {
+          onDonePress();
+        },
+        child: const Text(
+          "Done",
+          style: TextStyle(color: Colors.black),
+        ),
+      ),
+      colorDot: Colors.grey,
+      colorActiveDot: Colors.black,
     );
   }
 }
