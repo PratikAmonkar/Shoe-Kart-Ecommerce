@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class SignupScreen extends StatefulWidget {
-  const SignupScreen({Key? key}) : super(key: key);
+class LoginScreen extends StatefulWidget {
+  const LoginScreen({Key? key}) : super(key: key);
 
   @override
-  State<SignupScreen> createState() => _SignupScreenState();
+  State<LoginScreen> createState() => _LoginScreenState();
 }
 
-class _SignupScreenState extends State<SignupScreen> {
+class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -75,29 +75,6 @@ class _SignupScreenState extends State<SignupScreen> {
                         ),
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 20.0,
-                        vertical: 10.0,
-                      ),
-                      child: TextFormField(
-                        obscureText: true,
-                        enableSuggestions: false,
-                        autocorrect: false,
-                        decoration: InputDecoration(
-                          labelText: "Confirm Password",
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(
-                              20.0,
-                            ),
-                          ),
-                          prefixIcon: const Icon(
-                            Icons.lock,
-                            color: Colors.black,
-                          ),
-                        ),
-                      ),
-                    ),
                   ],
                 ),
                 Padding(
@@ -117,7 +94,7 @@ class _SignupScreenState extends State<SignupScreen> {
                           minimumSize: const Size(130, 40),
                         ),
                         child: const Text(
-                          "Signup",
+                          "Login",
                         ),
                       ),
                     ],
@@ -170,8 +147,8 @@ class _SignupScreenState extends State<SignupScreen> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: const [
-                      Text("Already have an account? "),
-                      Text("Login"),
+                      Text("Don't have an account? "),
+                      Text("Signup"),
                     ],
                   ),
                 ),
