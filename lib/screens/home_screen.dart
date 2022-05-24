@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shoe_kart_ecommerce_app/widgets/product_detail_home_widget.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -25,7 +26,8 @@ class _HomeScreenState extends State<HomeScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 12.0,vertical: 10.0),
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 12.0, vertical: 10.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: const [
@@ -65,6 +67,41 @@ class _HomeScreenState extends State<HomeScreen> {
                     color: Colors.black,
                   ),
                 ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15.0,vertical:10.0,),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: const [
+                  Text(
+                    "New Arrival",
+                    textAlign: TextAlign.left,
+                    style: TextStyle(
+                      fontSize: 20.0,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  Text(
+                    "See all",
+                    textAlign: TextAlign.right,
+                    style: TextStyle(
+                      fontSize: 15.0,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 260,
+              child: ListView(
+                scrollDirection: Axis.horizontal,
+                children: [
+                  productDetailWidget(),
+                  productDetailWidget(),
+                  productDetailWidget(),
+                  productDetailWidget(),
+                ],
               ),
             ),
           ],
