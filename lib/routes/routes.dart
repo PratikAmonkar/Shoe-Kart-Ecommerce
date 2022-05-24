@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:shoe_kart_ecommerce_app/screens/app_intro_screen_one.dart';
+import 'package:shoe_kart_ecommerce_app/screens/home_screen.dart';
 import 'package:shoe_kart_ecommerce_app/screens/login_screen.dart';
 import 'package:shoe_kart_ecommerce_app/screens/login_screen.dart';
 import 'package:shoe_kart_ecommerce_app/screens/signup_screen.dart';
@@ -41,7 +42,7 @@ class _RouteConfigState extends State<RouteConfig> {
   Widget build(BuildContext context) {
     // print(isFirstTimeLoading);
     return Scaffold(
-      body: isFirstTimeLoading ? const AppIntroScreen() : const LoginScreen(),
+      body: isFirstTimeLoading ? const AppIntroScreen() : const HomeScreen(),
     );
   }
 }
