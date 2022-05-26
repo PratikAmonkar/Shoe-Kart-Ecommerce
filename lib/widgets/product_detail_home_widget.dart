@@ -3,13 +3,7 @@ import 'package:flutter/material.dart';
 Widget productDetailWidget() {
   return Container(
     margin: const EdgeInsets.symmetric(horizontal: 8.0,),
-    decoration: BoxDecoration(
-      color: const Color.fromARGB(255, 248, 240, 255),
-      border: Border.all(
-        width: 2.0,
-      ),
-      borderRadius: BorderRadius.circular(15.0,),
-    ),
+    
     width: 200,
     height: 260,
     child: Padding(
