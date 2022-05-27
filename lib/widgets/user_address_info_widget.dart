@@ -14,7 +14,7 @@ Widget userInfoDetailWidget(BuildContext context) {
       ),
     ),
     width: MediaQuery.of(context).size.width,
-    height: 170,
+    height: 140,
     child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
@@ -50,7 +50,7 @@ Widget userInfoDetailWidget(BuildContext context) {
                     "Home",
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      fontSize: 20.0,
+                      fontSize: 18.0,
                     ),
                   ),
                 ),
@@ -60,7 +60,7 @@ Widget userInfoDetailWidget(BuildContext context) {
                     "fdsfsd fsdf sdf sdfsdf",
                     style: TextStyle(
                       fontWeight: FontWeight.w400,
-                      fontSize: 18.0,
+                      fontSize: 16.0,
                     ),
                   ),
                 ),
@@ -70,7 +70,7 @@ Widget userInfoDetailWidget(BuildContext context) {
                     "GA IN",
                     style: TextStyle(
                       fontWeight: FontWeight.w400,
-                      fontSize: 18.0,
+                      fontSize: 16.0,
                     ),
                   ),
                 ),
@@ -80,7 +80,7 @@ Widget userInfoDetailWidget(BuildContext context) {
                     "1234212",
                     style: TextStyle(
                       fontWeight: FontWeight.w400,
-                      fontSize: 18.0,
+                      fontSize: 16.0,
                     ),
                   ),
                 ),
