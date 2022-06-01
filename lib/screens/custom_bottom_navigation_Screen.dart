@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shoe_kart_ecommerce_app/screens/cart_screen.dart';
 import 'package:shoe_kart_ecommerce_app/screens/home_screen.dart';
-import 'package:shoe_kart_ecommerce_app/screens/signup_screen.dart';
+import 'package:shoe_kart_ecommerce_app/screens/user_profile_screen.dart';
 import 'package:shoe_kart_ecommerce_app/widgets/custom_bottom_navigation_widget.dart';
 
 class CustomBottomNavigationScreen extends StatefulWidget {
@@ -19,7 +19,7 @@ class _CustomBottomNavigationScreenState
   List screens = [
     const HomeScreen(),
     const CartScreen(),
-    const SignupScreen(),
+    const UserProfileScreen(),
   ];
 
   void onClicked(int index) {
@@ -35,12 +35,9 @@ class _CustomBottomNavigationScreenState
       body: SafeArea(
         child: screens.elementAt(selectedIndex),
       ),
-      //drawer: SideMenu(),
       bottomNavigationBar: customBottomNavigationWidget(
         selectedIndex: selectedIndex,
         onClicked: onClicked,
-        // selectedIndex: selectedIndex,
-        // onClicked: onClicked,
       ),
     );
   }
