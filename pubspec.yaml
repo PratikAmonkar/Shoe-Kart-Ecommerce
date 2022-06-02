@@ -37,6 +37,9 @@ dependencies:
   flutter_svg: ^1.0.3
   shared_preferences: ^2.0.15
   intro_slider: ^3.0.4
+  firebase_core: ^1.17.1
+  firebase_auth: ^3.3.19
+  firebase_database: ^9.0.15
 
 
 dev_dependencies:

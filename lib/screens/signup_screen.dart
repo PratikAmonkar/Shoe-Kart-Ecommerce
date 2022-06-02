@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:shoe_kart_ecommerce_app/database/firebase_query.dart';
+import 'package:shoe_kart_ecommerce_app/model/user_model.dart';
 
 class SignupScreen extends StatefulWidget {
   const SignupScreen({Key? key}) : super(key: key);
@@ -8,6 +10,11 @@ class SignupScreen extends StatefulWidget {
 }
 
 class _SignupScreenState extends State<SignupScreen> {
+  TextEditingController userNameController = TextEditingController();
+  TextEditingController userEmailController = TextEditingController();
+  TextEditingController userPasswordController = TextEditingController();
+  TextEditingController userConfirmPasswordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,6 +45,28 @@ class _SignupScreenState extends State<SignupScreen> {
                         vertical: 10.0,
                       ),
                       child: TextFormField(
+                        controller: userNameController,
+                        decoration: InputDecoration(
+                          labelText: "Username",
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(
+                              20.0,
+                            ),
+                          ),
+                          prefixIcon: const Icon(
+                            Icons.email,
+                            color: Colors.black,
+                          ),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 20.0,
+                        vertical: 10.0,
+                      ),
+                      child: TextFormField(
+                        controller: userEmailController,
                         decoration: InputDecoration(
                           labelText: "Email",
                           border: OutlineInputBorder(
@@ -61,6 +90,7 @@ class _SignupScreenState extends State<SignupScreen> {
                         obscureText: true,
                         enableSuggestions: false,
                         autocorrect: false,
+                        controller: userPasswordController,
                         decoration: InputDecoration(
                           labelText: "Password",
                           border: OutlineInputBorder(
@@ -84,6 +114,7 @@ class _SignupScreenState extends State<SignupScreen> {
                         obscureText: true,
                         enableSuggestions: false,
                         autocorrect: false,
+                        controller: userConfirmPasswordController,
                         decoration: InputDecoration(
                           labelText: "Confirm Password",
                           border: OutlineInputBorder(
@@ -106,7 +137,33 @@ class _SignupScreenState extends State<SignupScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          if (userNameController.text.isEmpty ||
+                              userEmailController.text.isEmpty ||
+                              userPasswordController.text.isEmpty ||
+                              userConfirmPasswordController.text.isEmpty) {
+                            print("Fields are empty");
+                            // showMyDialog(
+                            //     context, "Please fill the fields", "Warning");
+                          } else {
+                            if (userPasswordController.text !=
+                                userConfirmPasswordController.text) {
+                              // showMyDialog(context, "Password not match", "Alert");
+                              print("password not match");
+                            } else {
+                              UserModel userDetail = UserModel(
+                                userName: userNameController.text,
+                                userEmail: userEmailController.text,
+                                isUserVerified: false,
+                              );
+                              registerUser(userDetail,userPasswordController.text);
+                              // signUp(
+                              //   emailController.text,
+                              //   passwordController.text,
+                              // );
+                            }
+                          }
+                        },
                         style: ElevatedButton.styleFrom(
                           onPrimary: Colors.white,
                           shape: RoundedRectangleBorder(

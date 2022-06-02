@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "497963473788",
+    "project_id": "shoe-kart-debug",
+    "storage_bucket": "shoe-kart-debug.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:497963473788:android:6a6b42b989b3eb6866a2f9",
+        "android_client_info": {
+          "package_name": "com.example.shoe_kart_ecommerce_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "497963473788-fmhrdp0gh0u24h3l2u0jujee5rkmnnq6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCo5AyBjQLVXqvYL7S3fA-n2kpgapPfMLc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "497963473788-fmhrdp0gh0u24h3l2u0jujee5rkmnnq6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
