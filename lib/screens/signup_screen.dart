@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shoe_kart_ecommerce_app/database/firebase_query.dart';
-import 'package:shoe_kart_ecommerce_app/model/user_model.dart';
+import 'package:shoe_kart_ecommerce_app/widgets/custom_alert_box_widget.dart';
 
 class SignupScreen extends StatefulWidget {
   const SignupScreen({Key? key}) : super(key: key);
@@ -142,25 +142,16 @@ class _SignupScreenState extends State<SignupScreen> {
                               userEmailController.text.isEmpty ||
                               userPasswordController.text.isEmpty ||
                               userConfirmPasswordController.text.isEmpty) {
-                            print("Fields are empty");
-                            // showMyDialog(
-                            //     context, "Please fill the fields", "Warning");
+                            showMyDialog(context, "Fields are empty", "Alert");
                           } else {
                             if (userPasswordController.text !=
                                 userConfirmPasswordController.text) {
-                              // showMyDialog(context, "Password not match", "Alert");
-                              print("password not match");
+                              showMyDialog(
+                                  context, "Password not match", "Alert");
                             } else {
-                              UserModel userDetail = UserModel(
-                                userName: userNameController.text,
-                                userEmail: userEmailController.text,
-                                isUserVerified: false,
-                              );
-                              registerUser(userDetail,userPasswordController.text);
-                              // signUp(
-                              //   emailController.text,
-                              //   passwordController.text,
-                              // );
+                            
+                              registerUser(userEmailController.text,
+                                  userPasswordController.text, context);
                             }
                           }
                         },

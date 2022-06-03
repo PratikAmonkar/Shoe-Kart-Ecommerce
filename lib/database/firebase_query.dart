@@ -1,32 +1,31 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:shoe_kart_ecommerce_app/model/user_model.dart';
+import 'package:shoe_kart_ecommerce_app/widgets/custom_alert_box_widget.dart';
 
-void registerUser(UserModel userDetail, String userPassword) async {
-  // print(userEmail);
-  // final _auth = FirebaseAuth.instance;
-  // await FirebaseAuth.instance
-  //     .createUserWithEmailAndPassword(email: userEmail, password: userPassword)
-  //     .then((value) => {print("Data stored")})
-  //     .catchError((e) =>
-  //         // (err) => showMyDialog(context, err.message, "Warning"),
-  //         print("error"));
+void registerUser(String userEmail, String userPassword, context) async {
   try {
     final _auth = FirebaseAuth.instance;
-    DatabaseReference ref = FirebaseDatabase.instance.ref("users/");
-    final credential = await _auth.createUserWithEmailAndPassword(
-      email: userDetail.userEmail.toString(),
+    await _auth.createUserWithEmailAndPassword(
+      email: userEmail,
       password: userPassword,
     );
-    print(credential);
-    await ref.set(userDetail.toMap());
+    User? user = _auth.currentUser;
+    DatabaseReference ref = FirebaseDatabase.instance.ref("users/${user!.uid}");
+    UserModel userDetail = UserModel(
+      userId: user.uid,
+      userName: user.displayName,
+      userEmail: user.email,
+      isUserVerified: user.emailVerified,
+    );
+    await ref.set(userDetail.toMap()).whenComplete(
+        () => showMyDialog(context, "Signup successfully", "Success"));
   } on FirebaseAuthException catch (e) {
-    if (e.code == 'weak-password') {
-      print('The password provided is too weak.');
-    } else if (e.code == 'email-already-in-use') {
-      print('The account already exists for that email.');
+    if (e.code == 'email-already-in-use') {
+      showMyDialog(
+          context, "Account already present with this email id", "Warning");
     }
   } catch (e) {
-    print(e);
+    showMyDialog(context, "Error due to technical issue", "Alert");
   }
 }
