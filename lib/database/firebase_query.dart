@@ -29,3 +29,19 @@ void registerUser(String userEmail, String userPassword, context) async {
     showMyDialog(context, "Error due to technical issue", "Alert");
   }
 }
+
+void loginUser(String userEmail, String userPassword, context) async {
+  try {
+    final _auth = FirebaseAuth.instance;
+    await _auth
+        .signInWithEmailAndPassword(email: userEmail, password: userPassword)
+        .then(
+            (value) => showMyDialog(context, "Signin Successfully", "Success"));
+  } on FirebaseAuthException catch (e) {
+    if (e.code == 'user-not-found') {
+      showMyDialog(context, "No user found with this email id", "Alert");
+    }
+  } catch (e) {
+    showMyDialog(context, "Error due to technical issue", "Alert");
+  }
+}

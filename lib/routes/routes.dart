@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:shoe_kart_ecommerce_app/screens/app_intro_screen_one.dart';
-import 'package:shoe_kart_ecommerce_app/screens/cart_screen.dart';
-import 'package:shoe_kart_ecommerce_app/screens/custom_bottom_navigation_Screen.dart';
-import 'package:shoe_kart_ecommerce_app/screens/home_screen.dart';
-import 'package:shoe_kart_ecommerce_app/screens/payment_success_screen.dart';
-import 'package:shoe_kart_ecommerce_app/screens/signup_screen.dart';
+import 'package:shoe_kart_ecommerce_app/screens/login_screen.dart';
+
 
 class RouteConfig extends StatefulWidget {
   const RouteConfig({Key? key}) : super(key: key);
@@ -41,9 +38,8 @@ class _RouteConfigState extends State<RouteConfig> {
 
   @override
   Widget build(BuildContext context) {
-    // print(isFirstTimeLoading);
     return Scaffold(
-      body: isFirstTimeLoading ? const AppIntroScreen() : const SignupScreen(),
+      body: isFirstTimeLoading ? const AppIntroScreen() : const LoginScreen(),
     );
   }
 }

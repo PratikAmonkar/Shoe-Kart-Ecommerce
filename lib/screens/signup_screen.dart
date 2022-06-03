@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shoe_kart_ecommerce_app/database/firebase_query.dart';
+import 'package:shoe_kart_ecommerce_app/screens/login_screen.dart';
 import 'package:shoe_kart_ecommerce_app/widgets/custom_alert_box_widget.dart';
 
 class SignupScreen extends StatefulWidget {
@@ -149,7 +150,6 @@ class _SignupScreenState extends State<SignupScreen> {
                               showMyDialog(
                                   context, "Password not match", "Alert");
                             } else {
-                            
                               registerUser(userEmailController.text,
                                   userPasswordController.text, context);
                             }
@@ -217,9 +217,20 @@ class _SignupScreenState extends State<SignupScreen> {
                   padding: const EdgeInsets.all(10.0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
-                      Text("Already have an account? "),
-                      Text("Login"),
+                    children: [
+                      const Text("Already have an account? "),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (BuildContext context) =>
+                                  const LoginScreen(),
+                            ),
+                          );
+                        },
+                        child: const Text("Login"),
+                      ),
                     ],
                   ),
                 ),

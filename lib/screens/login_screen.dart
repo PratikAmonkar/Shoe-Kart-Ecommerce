@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:shoe_kart_ecommerce_app/database/firebase_query.dart';
+import 'package:shoe_kart_ecommerce_app/screens/signup_screen.dart';
+import 'package:shoe_kart_ecommerce_app/widgets/custom_alert_box_widget.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -8,6 +11,8 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  TextEditingController userEmailController = TextEditingController();
+  TextEditingController userPasswordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,6 +43,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         vertical: 10.0,
                       ),
                       child: TextFormField(
+                        controller: userEmailController,
                         decoration: InputDecoration(
                           labelText: "Email",
                           border: OutlineInputBorder(
@@ -58,6 +64,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         vertical: 10.0,
                       ),
                       child: TextFormField(
+                        controller: userPasswordController,
                         obscureText: true,
                         enableSuggestions: false,
                         autocorrect: false,
@@ -83,7 +90,15 @@ class _LoginScreenState extends State<LoginScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          if (userEmailController.text.isEmpty ||
+                              userPasswordController.text.isEmpty) {
+                            showMyDialog(context, "Fields are empty", "Alert");
+                          } else {
+                            loginUser(userEmailController.text,
+                                userPasswordController.text, context);
+                          }
+                        },
                         style: ElevatedButton.styleFrom(
                           onPrimary: Colors.white,
                           shape: RoundedRectangleBorder(
@@ -146,9 +161,20 @@ class _LoginScreenState extends State<LoginScreen> {
                   padding: const EdgeInsets.all(10.0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
-                      Text("Don't have an account? "),
-                      Text("Signup"),
+                    children: [
+                      const Text("Don't have an account? "),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (BuildContext context) =>
+                                  const SignupScreen(),
+                            ),
+                          );
+                        },
+                        child: const Text("Signup"),
+                      ),
                     ],
                   ),
                 ),
