@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intro_slider/slide_object.dart';
 import 'package:intro_slider/intro_slider.dart';
-import 'package:shoe_kart_ecommerce_app/screens/home_screen.dart';
+import 'package:shoe_kart_ecommerce_app/screens/login_screen.dart';
 
 class AppIntroScreen extends StatefulWidget {
   const AppIntroScreen({Key? key}) : super(key: key);
@@ -24,6 +24,8 @@ class _AppIntroScreenState extends State<AppIntroScreen> {
         backgroundColor: Colors.white,
         styleDescription: const TextStyle(
           color: Colors.black,
+          fontSize: 20.0,
+          fontWeight:FontWeight.bold,
         ),
       ),
     );
@@ -34,6 +36,8 @@ class _AppIntroScreenState extends State<AppIntroScreen> {
         backgroundColor: Colors.white,
         styleDescription: const TextStyle(
           color: Colors.black,
+          fontSize: 20.0,
+          fontWeight:FontWeight.bold,
         ),
       ),
     );
@@ -44,6 +48,8 @@ class _AppIntroScreenState extends State<AppIntroScreen> {
         backgroundColor: Colors.white,
         styleDescription: const TextStyle(
           color: Colors.black,
+          fontSize: 20.0,
+          fontWeight:FontWeight.bold,
         ),
       ),
     );
@@ -52,7 +58,7 @@ class _AppIntroScreenState extends State<AppIntroScreen> {
   void onDonePress() {
     Navigator.of(context).pushReplacement(
       MaterialPageRoute(
-        builder: (BuildContext context) => const HomeScreen(),
+        builder: (BuildContext context) => const LoginScreen(),
       ),
     );
   }
