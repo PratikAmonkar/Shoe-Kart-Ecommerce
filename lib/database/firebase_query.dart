@@ -45,3 +45,7 @@ void loginUser(String userEmail, String userPassword, context) async {
     showMyDialog(context, "Error due to technical issue", "Alert");
   }
 }
+
+void logoutUser() async {
+  await FirebaseAuth.instance.signOut();
+}

@@ -1,4 +1,6 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:shoe_kart_ecommerce_app/database/firebase_query.dart';
 import 'package:shoe_kart_ecommerce_app/screens/see_all_product_screen.dart';
 import 'package:shoe_kart_ecommerce_app/widgets/product_detail_home_widget.dart';
 
@@ -20,6 +22,20 @@ class _HomeScreenState extends State<HomeScreen> {
         iconTheme: const IconThemeData(
           color: Colors.black,
         ),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10.0),
+            child: GestureDetector(
+              onTap: () {
+                logoutUser();
+              },
+              child: const Icon(
+                Icons.logout,
+                color: Colors.black,
+              ),
+            ),
+          ),
+        ],
       ),
       drawer: const Drawer(),
       body: SafeArea(
