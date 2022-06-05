@@ -1,17 +1,31 @@
 import 'package:flutter/material.dart';
 
-Widget productDetailWidget() {
+Widget productDetailWidget(productUrl) {
   return Container(
-    margin: const EdgeInsets.symmetric(horizontal: 8.0,),
-    
+    margin: const EdgeInsets.symmetric(
+      horizontal: 8.0,
+    ),
     width: 200,
     height: 260,
     child: Padding(
-      padding: const EdgeInsets.only(top:12.0),
+      padding: const EdgeInsets.only(top: 12.0),
       child: Column(
         children: [
-          Image.asset(
-            "images/shoe-image.png",
+          Image.network(
+            productUrl,
+            fit: BoxFit.cover,
+            loadingBuilder: (BuildContext context, Widget child,
+                ImageChunkEvent? loadingProgress) {
+              if (loadingProgress == null) return child;
+              return Center(
+                child: CircularProgressIndicator(
+                  value: loadingProgress.expectedTotalBytes != null
+                      ? loadingProgress.cumulativeBytesLoaded /
+                          loadingProgress.expectedTotalBytes!
+                      : null,
+                ),
+              );
+            },
           ),
           Padding(
             padding: const EdgeInsets.all(10.0),

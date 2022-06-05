@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "497963473788",
+    "firebase_url": "https://shoe-kart-debug-default-rtdb.firebaseio.com",
     "project_id": "shoe-kart-debug",
     "storage_bucket": "shoe-kart-debug.appspot.com"
   },

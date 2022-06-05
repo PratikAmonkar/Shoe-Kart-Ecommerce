@@ -111,7 +111,9 @@ class _CartScreenState extends State<CartScreen> {
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(
-                        horizontal: 15.0, vertical: 5.0),
+                      horizontal: 15.0,
+                      vertical: 5.0,
+                    ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: const [
@@ -229,7 +231,7 @@ class _CartScreenState extends State<CartScreen> {
                   style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16.0),
                 ),
               ),
-                const Padding(
+              const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 3.0),
                 child: Text(
                   "After the package deliver you can pay using card/cash",

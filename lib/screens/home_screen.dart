@@ -1,6 +1,7 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:shoe_kart_ecommerce_app/database/firebase_query.dart';
+import 'package:shoe_kart_ecommerce_app/database/auth_config.dart';
+import 'package:shoe_kart_ecommerce_app/database/data_config.dart';
+import 'package:shoe_kart_ecommerce_app/model/product_model.dart';
 import 'package:shoe_kart_ecommerce_app/screens/see_all_product_screen.dart';
 import 'package:shoe_kart_ecommerce_app/widgets/product_detail_home_widget.dart';
 
@@ -12,6 +13,91 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  List<ProductModel> specificCategory = [];
+  List<ProductModel> mensCategory = [];
+  List<ProductModel> womenCategory = [];
+  List<ProductModel> childCategory = [];
+  @override
+  void initState() {
+    super.initState();
+    getNewArrivalData();
+    getMensData();
+    getWomenData();
+    getChildData();
+  }
+
+  void getNewArrivalData() async {
+    for (var data in await getProductData(context)) {
+      ProductModel productDetail = ProductModel(
+        productId: data.productId,
+        productTitle: data.productTitle,
+        productBrand: data.productBrand,
+        productUrl: data.productUrl,
+        productCategory: data.productCategory,
+        productActualPrice: data.productActualPrice,
+        productOfferPrice: data.productOfferPrice,
+        productOfferPercentage: data.productOfferPercentage,
+      );
+      setState(() {
+        specificCategory.add(productDetail);
+      });
+    }
+  }
+
+  void getMensData() async {
+    for (var data in await getMensCategoryProduct(context)) {
+      ProductModel productDetail = ProductModel(
+        productId: data.productId,
+        productTitle: data.productTitle,
+        productBrand: data.productBrand,
+        productUrl: data.productUrl,
+        productCategory: data.productCategory,
+        productActualPrice: data.productActualPrice,
+        productOfferPrice: data.productOfferPrice,
+        productOfferPercentage: data.productOfferPercentage,
+      );
+      setState(() {
+        mensCategory.add(productDetail);
+      });
+    }
+  }
+
+  void getWomenData() async {
+    for (var data in await getWomenCategoryProduct(context)) {
+      ProductModel productDetail = ProductModel(
+        productId: data.productId,
+        productTitle: data.productTitle,
+        productBrand: data.productBrand,
+        productUrl: data.productUrl,
+        productCategory: data.productCategory,
+        productActualPrice: data.productActualPrice,
+        productOfferPrice: data.productOfferPrice,
+        productOfferPercentage: data.productOfferPercentage,
+      );
+      setState(() {
+        womenCategory.add(productDetail);
+      });
+    }
+  }
+
+  void getChildData() async {
+    for (var data in await getChildrenCategoryProduct(context)) {
+      ProductModel productDetail = ProductModel(
+        productId: data.productId,
+        productTitle: data.productTitle,
+        productBrand: data.productBrand,
+        productUrl: data.productUrl,
+        productCategory: data.productCategory,
+        productActualPrice: data.productActualPrice,
+        productOfferPrice: data.productOfferPrice,
+        productOfferPercentage: data.productOfferPercentage,
+      );
+      setState(() {
+        childCategory.add(productDetail);
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,7 +131,9 @@ class _HomeScreenState extends State<HomeScreen> {
             children: [
               Padding(
                 padding: const EdgeInsets.symmetric(
-                    horizontal: 12.0, vertical: 10.0),
+                  horizontal: 12.0,
+                  vertical: 10.0,
+                ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: const [
@@ -125,14 +213,15 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               SizedBox(
                 height: 260,
-                child: ListView(
+                child: ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: specificCategory.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return productDetailWidget(
+                      specificCategory[index].productUrl,
+                    );
+                  },
                   scrollDirection: Axis.horizontal,
-                  children: [
-                    productDetailWidget(),
-                    productDetailWidget(),
-                    productDetailWidget(),
-                    productDetailWidget(),
-                  ],
                 ),
               ),
               Padding(
@@ -163,14 +252,15 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               SizedBox(
                 height: 260,
-                child: ListView(
+                child: ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: mensCategory.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return productDetailWidget(
+                      mensCategory[index].productUrl,
+                    );
+                  },
                   scrollDirection: Axis.horizontal,
-                  children: [
-                    productDetailWidget(),
-                    productDetailWidget(),
-                    productDetailWidget(),
-                    productDetailWidget(),
-                  ],
                 ),
               ),
               Padding(
@@ -201,14 +291,15 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               SizedBox(
                 height: 260,
-                child: ListView(
+                child: ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: womenCategory.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return productDetailWidget(
+                      womenCategory[index].productUrl,
+                    );
+                  },
                   scrollDirection: Axis.horizontal,
-                  children: [
-                    productDetailWidget(),
-                    productDetailWidget(),
-                    productDetailWidget(),
-                    productDetailWidget(),
-                  ],
                 ),
               ),
               Padding(
@@ -239,14 +330,15 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               SizedBox(
                 height: 260,
-                child: ListView(
+                child: ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: childCategory.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return productDetailWidget(
+                      childCategory[index].productUrl,
+                    );
+                  },
                   scrollDirection: Axis.horizontal,
-                  children: [
-                    productDetailWidget(),
-                    productDetailWidget(),
-                    productDetailWidget(),
-                    productDetailWidget(),
-                  ],
                 ),
               ),
             ],

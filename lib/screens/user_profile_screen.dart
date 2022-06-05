@@ -29,8 +29,6 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
         child: SingleChildScrollView(
           child: Center(
             child: Column(
-              // mainAxisAlignment: MainAxisAlignment.center,
-              // crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 CircleAvatar(
                   radius: 50,
@@ -48,7 +46,6 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                 const CustomCardProfileWidget(),
                 const CustomCardProfileWidget(),
                 const CustomCardProfileWidget(),
-
               ],
             ),
           ),

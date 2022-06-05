@@ -19,7 +19,8 @@ void registerUser(String userEmail, String userPassword, context) async {
       isUserVerified: user.emailVerified,
     );
     await ref.set(userDetail.toMap()).whenComplete(
-        () => showMyDialog(context, "Signup successfully", "Success"));
+          () => showMyDialog(context, "Signup successfully", "Success"),
+        );
   } on FirebaseAuthException catch (e) {
     if (e.code == 'email-already-in-use') {
       showMyDialog(
@@ -36,7 +37,8 @@ void loginUser(String userEmail, String userPassword, context) async {
     await _auth
         .signInWithEmailAndPassword(email: userEmail, password: userPassword)
         .then(
-            (value) => showMyDialog(context, "Signin Successfully", "Success"));
+          (value) => showMyDialog(context, "Signin Successfully", "Success"),
+        );
   } on FirebaseAuthException catch (e) {
     if (e.code == 'user-not-found') {
       showMyDialog(context, "No user found with this email id", "Alert");

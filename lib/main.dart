@@ -18,9 +18,10 @@ class MyApp extends StatelessWidget {
       DeviceOrientation.portraitUp,
     ]);
     return MaterialApp(
-        title: "Shoe-Kart",
-        theme: ThemeData(primarySwatch: Colors.purple),
-        debugShowCheckedModeBanner: false,
-        home: const SplashScren());
+      title: "Shoe-Kart",
+      theme: ThemeData(primarySwatch: Colors.purple),
+      debugShowCheckedModeBanner: false,
+      home: const SplashScren(),
+    );
   }
 }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shoe_kart_ecommerce_app/database/firebase_query.dart';
+import 'package:shoe_kart_ecommerce_app/database/auth_config.dart';
 import 'package:shoe_kart_ecommerce_app/screens/login_screen.dart';
 import 'package:shoe_kart_ecommerce_app/widgets/custom_alert_box_widget.dart';
 
